@@ -1,0 +1,26 @@
+.create-quiz-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.create-quiz-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.question-card {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

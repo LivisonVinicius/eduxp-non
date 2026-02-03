@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String   @id @default(uuid())
+  name     String
+  email    String   @unique
+  password String
+  role     Role
+  xp       Int      @default(0)
+
+  quizzesCreated Quiz[]
+  quizResults    QuizResult[]
+}
+
+model Quiz {
+  id           String     @id @default(uuid())
+  title        String
+  minimumScore Int
+  xpReward     Int
+
+  createdById  String
+  createdBy    User       @relation(fields: [createdById], references: [id])
+
+  questions    Question[]
+  results      QuizResult[]
+}
+
+model Question {
+  id            String   @id @default(uuid())
+  statement     String
+  options       String
+  correctAnswer Int
+
+  quizId String
+  quiz   Quiz   @relation(fields: [quizId], references: [id])
+}
+
+model QuizResult {
+  id     String  @id @default(uuid())
+  score  Int
+  passed Boolean
+
+  userId String
+  quizId String
+
+  user User @relation(fields: [userId], references: [id])
+  quiz Quiz @relation(fields: [quizId], references: [id])
+
+  @@unique([userId, quizId])
+}
+
+enum Role {
+  STUDENT
+  TEACHER
+}

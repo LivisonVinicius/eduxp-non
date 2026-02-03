@@ -1,0 +1,30 @@
+.quiz-page {
+  min-height: calc(100vh - 64px);
+  background: linear-gradient(135deg, #6c63ff, #5eead4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.quiz-card,
+.quiz-result {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.quiz-progress {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.quiz-options {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
